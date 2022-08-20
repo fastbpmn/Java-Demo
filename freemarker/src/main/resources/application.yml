@@ -1,0 +1,9 @@
+spring:
+  freemarker:
+    cache: false
+    suffix: .ftlh
+    staticToolPackagePath:
+      - com.zhengxl.freemarker.tools.UserStaticTool
+      - com.zhengxl.freemarker.tools.AnotherStaticTool
+server:
+  port: 8080

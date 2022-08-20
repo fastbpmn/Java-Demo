@@ -1,0 +1,16 @@
+spring:
+  #数据源配置
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db1
+    username: sa
+    password:
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.zhengxl.**: debug

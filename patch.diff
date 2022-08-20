@@ -1,0 +1,108 @@
+From a1264262fcaa8533fbf6e1665a7511e737703d17 Mon Sep 17 00:00:00 2001
+From: fastpbpmn <fastbpmn@gmail.com>
+Date: Sat, 20 Aug 2022 23:10:45 +0800
+Subject: [PATCH] =?UTF-8?q?8203=E5=BC=80=E5=8F=91=E5=AE=8C=E6=88=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ list-demo/pom.xml                             | 24 ++++++++++++++
+ .../java/com/example/list/StreamList.java     | 31 +++++++++++++++++++
+ .../main/java/com/example/list/pojo/User.java | 14 +++++++++
+ 3 files changed, 69 insertions(+)
+ create mode 100644 list-demo/pom.xml
+ create mode 100644 list-demo/src/main/java/com/example/list/StreamList.java
+ create mode 100644 list-demo/src/main/java/com/example/list/pojo/User.java
+
+diff --git a/list-demo/pom.xml b/list-demo/pom.xml
+new file mode 100644
+index 0000000..cb7929d
+--- /dev/null
++++ b/list-demo/pom.xml
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>list-demo</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <dependencies>
++        <dependency>
++            <groupId>org.projectlombok</groupId>
++            <artifactId>lombok</artifactId>
++            <version>RELEASE</version>
++            <scope>compile</scope>
++        </dependency>
++    </dependencies>
++
++    <properties>
++        <maven.compiler.source>8</maven.compiler.source>
++        <maven.compiler.target>8</maven.compiler.target>
++    </properties>
++
++</project>
+\ No newline at end of file
+diff --git a/list-demo/src/main/java/com/example/list/StreamList.java b/list-demo/src/main/java/com/example/list/StreamList.java
+new file mode 100644
+index 0000000..e4aaa3b
+--- /dev/null
++++ b/list-demo/src/main/java/com/example/list/StreamList.java
+@@ -0,0 +1,31 @@
++package com.example.list;
++
++import com.example.list.pojo.User;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.stream.Collectors;
++
++public class StreamList {
++    // 参考这篇文章 https://blog.csdn.net/yuxiangdeming/article/details/121288780
++    public static void main(String[] args) {
++        List<User> userList1 = new ArrayList<>();
++        userList1.add(new User("张三", 12, "南京"));
++        userList1.add(new User("李四", 13, "北京"));
++        userList1.add(new User("王五", 14, "苏州"));
++        userList1.add(new User("王五", 17, "郑州"));
++
++        List<User> userList2 = new ArrayList<>();
++        userList2.add(new User("李四", 13, "北京"));
++        userList2.add(new User("王五", 20, "广州"));
++
++        List<User> matchNameOrAge = userList1.stream()
++                .filter(
++                        a -> userList2.stream().anyMatch(b -> a.getName().equals(b.getName())
++                                || a.getAge() == b.getAge()
++                        )
++                ).collect(Collectors.toList());
++
++        System.out.println("matchNameOrAge = " + matchNameOrAge);
++    }
++}
+diff --git a/list-demo/src/main/java/com/example/list/pojo/User.java b/list-demo/src/main/java/com/example/list/pojo/User.java
+new file mode 100644
+index 0000000..f64bb06
+--- /dev/null
++++ b/list-demo/src/main/java/com/example/list/pojo/User.java
+@@ -0,0 +1,14 @@
++package com.example.list.pojo;
++
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++
++@Data
++@NoArgsConstructor
++@AllArgsConstructor
++public class User {
++    private String name;
++    private int age;
++    private String city;
++}
+-- 
+2.35.1.windows.2
+

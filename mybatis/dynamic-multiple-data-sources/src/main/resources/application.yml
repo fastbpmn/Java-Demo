@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    first:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:db1
+      username: sa
+      password:
+    second:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:db2
+      username: sa
+      password:
+
+logging:
+  level:
+    top.javahelper.dynamicmultipledatasources.mapper: debug

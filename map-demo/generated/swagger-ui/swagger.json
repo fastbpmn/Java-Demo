@@ -1,0 +1,19 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a Baeldung Document Enum Sample Code",
+    "version" : "v1",
+    "title" : "Baeldung - Document Enum",
+    "contact" : {
+      "name" : "Test",
+      "email" : "pmurria@baeldung.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "baeldung.com",
+  "basePath" : "/api",
+  "schemes" : [ "http", "https" ]
+}
